@@ -20,8 +20,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install CPU-only PyTorch first (avoids pulling the massive CUDA build)
 RUN pip install --no-cache-dir \
-    torch==2.3.0+cpu \
-    torchvision==0.18.0+cpu \
+    torch==2.4.0+cpu \
+    torchvision==0.19.0+cpu \
     --index-url https://download.pytorch.org/whl/cpu
 
 # Copy requirements and install remaining dependencies
