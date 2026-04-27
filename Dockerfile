@@ -29,13 +29,6 @@ COPY requirements.txt .
 # torch/torchvision already installed above — skip them here to avoid re-download
 RUN pip install --no-cache-dir $(grep -v '^torch' requirements.txt | grep -v '^torchvision')
 
-# Pre-download HuggingFace models at build time so cold starts are instant
-RUN python -c "\
-from transformers import pipeline; \
-pipeline('image-classification', model='Falconsai/nsfw_image_detection'); \
-pipeline('image-classification', model='jaranohaal/vit-base-violence-detection'); \
-print('HuggingFace models cached ✅')"
-
 # Copy application code
 COPY . .
 
